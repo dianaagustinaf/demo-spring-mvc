@@ -10,4 +10,5 @@ public interface EmpleadoService {
 
     public Empleado findByIdEmpleado(Long id);
 
+    public void guardar(Empleado empleado);
 }

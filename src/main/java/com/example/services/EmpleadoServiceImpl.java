@@ -36,5 +36,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         // findById returns an OPTIONAL  == .get() convert to Empleado
         return this.empleadoDao.findById(id).get();
     }
+
+    @Override
+    public void guardar(Empleado empleado) {
+
+        empleadoDao.save(empleado);
+        //el save se da cuenta si tiene ID = MODIFICA
+                         // si no tiene ID =  CREA
+    }
     
 }

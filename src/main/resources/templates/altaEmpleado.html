@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alta</title>
 </head>
 <body>
     
+    <h1>Formulario Alta Empleado</h1>
+    <!--   POST al controller /guardar --- el Empleado vacío que viene de /alta lo paso por th:object -->
+    <form th:action="@{/guardar}" method="post" th:object="${empleado}">
+
+                                <!-- field === con *  que toma los atributos del objeto -->
+        <input type="text" placeholder="Nombre: " th:field="*{Nombre}">
+        <br>
+        <input type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
+        <br>
+        <input type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
+        <br>
+        <input type="text" placeholder="Salario: " th:field="*{Salario}">
+        <br>
+        <input type="submit">
+
+    </form>
+
+
+
 </body>
 </html>
