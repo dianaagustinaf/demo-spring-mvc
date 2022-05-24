@@ -36,12 +36,9 @@ public class MainController {
     @GetMapping("/listar")
     public ModelAndView listarEmpleado(){
 
-        String saludo = "Holis :)";
-
         ModelAndView maw = new ModelAndView("listar");
 
         maw.addObject("empleados", empleadoService.findAll());
-        maw.addObject("saludo", saludo);
 
         return maw;
     }
@@ -54,17 +51,20 @@ public class MainController {
         return "detalle";
     }
 
+
     @GetMapping("/alta")
     public String mostrarFormulario(Model model){
-       
-        //form vacio vinculado a un new empleado vacío para "completar"
-        model.addAttribute("empleado", new Empleado()); 
-        // paso new Empleado y lo nombro como "empleado"
-
-        // TAMBIEN MANDAR LISTA DE DEPARTAMENTOS
         
+        //form vacio vinculado a un new empleado vacío para "completar"
+        model.addAttribute("empleado", new Empleado());
+        // paso new Empleado y lo nombro como "empleado"
+        
+        // TAMBIEN MANDAR LISTA DE DEPARTAMENTOS
+        model.addAttribute("departamentos", departamentoService.findAll());
+
         return "altaEmpleado";
     }
+
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute(name = "empleado") Empleado empleado){

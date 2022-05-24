@@ -6,7 +6,9 @@ import com.example.dao.DepartamentoDao;
 import com.example.entities.Departamento;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DepartamentoServiceImpl implements DepartamentoService{
 
     @Autowired

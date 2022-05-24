@@ -21,11 +21,19 @@
         <br>
         <input type="text" placeholder="Salario: " th:field="*{Salario}">
         <br>
+        <!--  Departamentos  -->
+            
+        <select th:field="*{Departamento}">
+            <option th:each="departamento: ${departamentos}" 
+                    th:value="${departamento.id}" 
+                    th:text="${departamento.Nombre}">
+            </option>
+        </select>
+
+        <br>
         <input type="submit">
 
     </form>
-
-
 
 </body>
 </html>
