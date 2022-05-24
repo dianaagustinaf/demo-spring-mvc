@@ -24,7 +24,7 @@
             <tr th:each="empleado : ${empleados}">
                 <td th:text="${empleado.Nombre}"></td>
                 <td th:text="${empleado.Salario}"></td>
-                <td><a href="#">Detalles</a></td>              
+                <td><a th:href="@{/detalle/}+${empleado.id}">Detalles</a></td>              
             </tr>
         </tbody>
     </table>

@@ -29,5 +29,12 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
         return this.empleadoDao.findAll();
     }
+
+    @Override
+    public Empleado findByIdEmpleado(Long id) {
+
+        // findById returns an OPTIONAL  == .get() convert to Empleado
+        return this.empleadoDao.findById(id).get();
+    }
     
 }
