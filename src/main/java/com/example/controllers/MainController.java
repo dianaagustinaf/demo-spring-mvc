@@ -28,9 +28,12 @@ public class MainController {
     @GetMapping("/listar")
     public ModelAndView listarEmpleado(){
 
+        String saludo = "Holis :)";
+
         ModelAndView maw = new ModelAndView("listar");
 
         maw.addObject("empleados", empleadoService.findAll());
+        maw.addObject("saludo", saludo);
 
         return maw;
     }

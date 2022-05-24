@@ -32,4 +32,5 @@ public class Departamento implements Serializable{
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "departamento")
     private List<Empleado> empleados;
 
+    
 }

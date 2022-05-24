@@ -8,9 +8,26 @@
 </head>
 <body>
     
-    <h1>Hasta mañana</h1>
+    <!-- <p th:text="${saludo}"></p> -->
 
-    
+    <h1>Listado de Empleados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Salario</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="empleado : ${empleados}">
+                <td th:text="${empleado.Nombre}"></td>
+                <td th:text="${empleado.Salario}"></td>
+                <td><a href="#">Detalles</a></td>              
+            </tr>
+        </tbody>
+    </table>
 
 
 </body>
