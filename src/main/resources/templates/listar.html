@@ -30,7 +30,7 @@
                 <td th:text="${empleado.Nombre}"></td>
                 <td th:text="${empleado.Salario}"></td>
                 <td><a th:href="@{/detalle/}+${empleado.id}">Detalles</a></td>     
-                <td><a th:href="@{/altaEmpleado/}+${empleado.id}">Modificar</a></td>                       
+                <td><a th:href="@{/modificacion/}+${empleado.id}">Modificar</a></td>                       
             </tr>
         </tbody>
     </table>

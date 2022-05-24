@@ -65,6 +65,17 @@ public class MainController {
         return "altaEmpleado";
     }
 
+    @GetMapping("/modificacion/{id}")
+    public String mostrarFormularioModificacion(@PathVariable(name = "id") Long id, Model model){
+        
+        model.addAttribute("empleado", empleadoService.findByIdEmpleado(id));
+        
+        // TAMBIEN MANDAR LISTA DE DEPARTAMENTOS
+        model.addAttribute("departamentos", departamentoService.findAll());
+
+        return "modificacion";
+    }
+
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute(name = "empleado") Empleado empleado){
