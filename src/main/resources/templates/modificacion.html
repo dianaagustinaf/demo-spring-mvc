@@ -31,7 +31,7 @@
         
         <!--  Departamentos  -->
         <!-- th:field="*{Departamento}"  -->
-        <select id="departamentos" name="departamentos" th:object="${empleado}">
+        <select id="Departamento" name="Departamento">       
             <option th:each="departamento: ${departamentos}" 
                     th:value="${departamento.id}" 
                     th:text="${departamento.Nombre}"
