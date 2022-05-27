@@ -21,29 +21,44 @@
     <form th:action="@{/guardar}" method="post" th:object="${empleado}">
 
                                 <!-- field === con *  que toma los atributos del objeto -->
-        <input type="text" th:field="*{Nombre}">
+        <input type="text" placeholder="Nombre: " th:field="*{Nombre}">
         <br>
-        <input type="text" th:field="*{primerApellido}">
+        <input type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
         <br>
-        <input type="text" th:field="*{segundoApellido}">
+        <input type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
         <br>
-        <input type="text" th:field="*{Salario}">
+        <input type="text" placeholder="Salario: " th:field="*{Salario}">
         <br>
-        <input type="hidden" th:field="*{id}">
+
+        <img th:src="${empleado.id != 0} 
+                                    ? @{/recursos/}+${empleado.foto}
+                                    : '' " 
+                        alt="imagen del empleado">
+
+        <input type="file" class="form-control" name="file" required>
+
         
         <!--  Departamentos  -->
         <!-- th:field="*{Departamento}"  -->
         <select id="Departamento" name="Departamento">       
+            <option value="0"></option>
             <option th:each="departamento: ${departamentos}" 
                     th:value="${departamento.id}" 
                     th:text="${departamento.Nombre}"
-                    th:selected="${departamento.id == empleado.Departamento.id}"
+                    th:selected="${empleado.id != null
+                        ? departamento.id == empleado.Departamento.id
+                        : null }"
             >
             </option>
         </select> 
 
         <br>
-        <input type="submit">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{foto}">
+
+        <input class="btn btn-success" type="submit">
+        <a href="/listar" class="btn btn-success">Volver al inicio</a>
+
 
     </form>
 

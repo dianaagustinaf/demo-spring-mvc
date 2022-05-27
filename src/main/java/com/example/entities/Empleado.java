@@ -30,7 +30,8 @@ public class Empleado implements Serializable {
     private String primerApellido;
     private String segundoApellido;    
     private Double salario;
+    private String foto;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Departamento departamento;
 }

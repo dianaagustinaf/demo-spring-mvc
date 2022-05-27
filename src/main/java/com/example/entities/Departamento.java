@@ -29,7 +29,7 @@ public class Departamento implements Serializable{
 
     private String nombre;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "departamento")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "departamento")
     private List<Empleado> empleados;
 
     
