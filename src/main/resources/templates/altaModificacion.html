@@ -37,11 +37,13 @@
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" placeholder="Salario: " th:field="*{Salario}">
-                        <br>
                     </div>
                     <img width="50%" th:src="${empleado.id != 0} 
                                     ? @{/imagenes/}+${empleado.foto} 
-                                    : '' " alt="imagen del empleado">
+                                    : null " 
+                                    th:alt="${empleado.id != 0}
+                                        ? 'imagen del empleado'
+                                        : null ">
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Foto de Perfil</label>
