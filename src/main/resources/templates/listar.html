@@ -39,15 +39,42 @@
                             <td th:text="${empleado.Nombre}"></td>
                             <td th:text="${empleado.Salario}"></td>
                             <td><a class="btn btn-success" th:href="@{/detalle/}+${empleado.id}">Detalles</a></td>
-                            <td><a class="btn btn-success" th:href="@{/altaModificacion/}+${empleado.id}">Modificar</a></td>
+                            <td><a class="btn btn-success" th:href="@{/altaModificacion/}+${empleado.id}">Modificar</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
-
             </div>
         </div>
     </div>
+
+    <br>
+    <!-- LISTADO EN FORMATO CARD   class card style="width: 18rem;"-->
+    
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4" th:each="empleado : ${empleados}">
+
+                    <div class="col">
+                    <div class="card">
+                        <img th:src=@{/imagenes/}+${empleado.foto} class="card-img-top"
+                            alt="Foto de perfil del empleado">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${empleado.Nombre}"></h5>
+                            <p class="card-text" th:text="${empleado.Salario}"></p>
+                            <a class="btn btn-success" th:href="@{/detalle/}+${empleado.id}">Detalles</a>
+                            <a class="btn btn-success" th:href="@{/altaModificacion/}+${empleado.id}">Modificar</a>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section> 
 
     <!-- JavaScript Bundle with Popper -->
     <script th:replace="base :: scripts"></script>
