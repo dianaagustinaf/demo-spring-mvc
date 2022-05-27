@@ -24,19 +24,19 @@
 
                     <!-- field === con *  que toma los atributos del objeto -->
                     <div class="mb-3">
-                        <input type="text" placeholder="Nombre: " th:field="*{Nombre}">
+                        <input class="form-control" type="text" placeholder="Nombre: " th:field="*{Nombre}">
                         <br>
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
+                        <input class="form-control" type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
                         <br>
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
+                        <input class="form-control" type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
                         <br>
                     </div>
                     <div class="mb-3">
-                        <input type="text" placeholder="Salario: " th:field="*{Salario}">
+                        <input class="form-control" type="text" placeholder="Salario: " th:field="*{Salario}">
                         <br>
                     </div>
                     <img width="50%" th:src="${empleado.id != 0} 
@@ -44,14 +44,15 @@
                                     : '' " alt="imagen del empleado">
 
                     <div class="mb-3">
-                        <input type="file" class="form-control" name="file" required>
-                    </div>
+                        <label for="formFile" class="form-label">Foto de Perfil</label>
+                        <input class="form-control" type="file" id="formFile">
+                      </div>
 
                     <!--  Departamentos  -->
                     <!-- th:field="*{Departamento}"  -->
                     <div class="mb-3">
                         <label for="departamento">Departamento: </label>
-                        <select id="Departamento" name="Departamento">
+                        <select class="form-control" id="Departamento" name="Departamento">
                             <option value="0"></option>
                             <option th:each="departamento: ${departamentos}" th:value="${departamento.id}"
                                 th:text="${departamento.Nombre}" th:selected="${empleado.id != 0
@@ -64,7 +65,7 @@
                     <input type="hidden" th:field="*{id}">
                     <input type="hidden" th:field="*{foto}">
 
-                    <a href="/listar" class="btn btn-success">Volver al inicio</a>
+                    <a href="/listar" class="btn btn-secondary">Volver al inicio</a>
                     <input class="btn btn-success" type="submit">
 
 
