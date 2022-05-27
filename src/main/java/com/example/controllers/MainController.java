@@ -58,7 +58,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/altaModificacion")
+    @GetMapping("/altaModificacion/{id}")
     public String altaModificacion(Model model,
                                 @PathVariable(name = "id", required = false) Long id){
         
