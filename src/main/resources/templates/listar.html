@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head th:insert="base :: cabecera">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,36 +11,47 @@
 
 
 <body>
-    
-    <!-- <p th:text="${saludo}"></p> -->
 
-    <h1>Listado de Empleados</h1>
+    <div class="container-fluid">
+        <div class="row">
 
-    <div>
-        <a th:href="@{/altaModificacion/0}">Alta Empleado</a>
+
+
+            <h1>Listado de Empleados</h1>
+
+            <div>
+                <a class="btn btn-success w-25 m-auto" th:href="@{/altaModificacion/0}">Alta Empleado</a>
+            </div>
+            <br>
+            <div class="col-md-12">
+
+                <table class="table table-striped table-inverse table-responsive">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Salario</th>
+                            <th>Detalles</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="empleado : ${empleados}">
+                            <td th:text="${empleado.Nombre}"></td>
+                            <td th:text="${empleado.Salario}"></td>
+                            <td><a class="btn btn-success" th:href="@{/detalle/}+${empleado.id}">Detalles</a></td>
+                            <td><a class="btn btn-success" th:href="@{/altaModificacion/}+${empleado.id}">Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
     </div>
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Salario</th>
-                <th>Detalles</th>
-                <th>Modificar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="empleado : ${empleados}">
-                <td th:text="${empleado.Nombre}"></td>
-                <td th:text="${empleado.Salario}"></td>
-                <td><a th:href="@{/detalle/}+${empleado.id}">Detalles</a></td>     
-                <td><a th:href="@{/altaModificacion/}+${empleado.id}">Modificar</a></td>                       
-            </tr>
-        </tbody>
-    </table>
 
-<!-- JavaScript Bundle with Popper -->
+    <!-- JavaScript Bundle with Popper -->
     <script th:replace="base :: scripts"></script>
 
 </body>
+
 </html>

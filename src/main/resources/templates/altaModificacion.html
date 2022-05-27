@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head th:insert="base :: cabecera">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,61 +8,74 @@
     <title>Modificacion</title>
 
 </head>
+
 <body>
-    
-    <h1>Formulario Alta Empleado</h1>
 
-<!-- 
-    <p th:text="'Nombre del empleado: '+${empleado.id}"></p>
-    <p th:text="'Departamento: '+${empleado.Nombre}"></p> -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+
+                <h1>Formulario Alta Empleado</h1>
 
 
-    <!--   POST al controller /guardar --- el Empleado vacío que viene de /alta lo paso por th:object -->
-    <form th:action="@{/guardar}" method="post" th:object="${empleado}">
+                <!--   POST al controller /guardar --- el Empleado vacío que viene de /alta lo paso por th:object -->
+                <form class="form form-data" th:action="@{/guardar}" th:object="${empleado}" method="post"
+                    enctype="multipart/form-data">
 
-                                <!-- field === con *  que toma los atributos del objeto -->
-        <input type="text" placeholder="Nombre: " th:field="*{Nombre}">
-        <br>
-        <input type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
-        <br>
-        <input type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
-        <br>
-        <input type="text" placeholder="Salario: " th:field="*{Salario}">
-        <br>
+                    <!-- field === con *  que toma los atributos del objeto -->
+                    <div class="mb-3">
+                        <input type="text" placeholder="Nombre: " th:field="*{Nombre}">
+                        <br>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
+                        <br>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
+                        <br>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Salario: " th:field="*{Salario}">
+                        <br>
+                    </div>
+                    <img width="50%" th:src="${empleado.id != 0} 
+                                    ? @{/imagenes/}+${empleado.foto} 
+                                    : '' " alt="imagen del empleado">
 
-        <img th:src="${empleado.id != 0} 
-                                    ? @{/recursos/}+${empleado.foto}
-                                    : '' " 
-                        alt="imagen del empleado">
+                    <div class="mb-3">
+                        <input type="file" class="form-control" name="file" required>
+                    </div>
 
-        <input type="file" class="form-control" name="file" required>
-
-        
-        <!--  Departamentos  -->
-        <!-- th:field="*{Departamento}"  -->
-        <select id="Departamento" name="Departamento">       
-            <option value="0"></option>
-            <option th:each="departamento: ${departamentos}" 
-                    th:value="${departamento.id}" 
-                    th:text="${departamento.Nombre}"
-                    th:selected="${empleado.id != 0
+                    <!--  Departamentos  -->
+                    <!-- th:field="*{Departamento}"  -->
+                    <div class="mb-3">
+                        <label for="departamento">Departamento: </label>
+                        <select id="Departamento" name="Departamento">
+                            <option value="0"></option>
+                            <option th:each="departamento: ${departamentos}" th:value="${departamento.id}"
+                                th:text="${departamento.Nombre}" th:selected="${empleado.id != 0
                                 ? departamento.id == empleado.Departamento.id
-                                : null}"
-            >
-            </option>
-        </select> 
+                                : null}">
+                            </option>
+                        </select>
+                        <br>
+                    </div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{foto}">
 
-        <br>
-        <input type="hidden" th:field="*{id}">
-        <input type="hidden" th:field="*{foto}">
-
-        <input class="btn btn-success" type="submit">
-        <a href="/listar" class="btn btn-success">Volver al inicio</a>
+                    <a href="/listar" class="btn btn-success">Volver al inicio</a>
+                    <input class="btn btn-success" type="submit">
 
 
-    </form>
+                </form>
+
+            </div>
+        </div>
+    </div>
 
     <script th:replace="base :: scripts"></script>
 
 </body>
+
 </html>
