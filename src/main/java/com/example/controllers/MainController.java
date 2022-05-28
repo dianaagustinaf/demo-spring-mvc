@@ -30,14 +30,14 @@ public class MainController {
     @Autowired
     private DepartamentoService departamentoService;
     
-    /*
-    @GetMapping("/listar")
+    
+    @GetMapping("/base")
     public String listarEmpleado(Model model) {
 
         model.addAttribute("empleados", empleadoService.findAll());
-        return "listar";
+        return "base";
     }
-    */
+    
     
     @GetMapping("/listar")
     public ModelAndView listarEmpleado(){

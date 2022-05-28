@@ -28,47 +28,60 @@
                         <br>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Primer apellido: " th:field="*{primerApellido}">
+                        <input class="form-control" type="text" placeholder="Primer apellido: "
+                            th:field="*{primerApellido}">
                         <br>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Segundo apellido: " th:field="*{segundoApellido}">
+                        <input class="form-control" type="text" placeholder="Segundo apellido: "
+                            th:field="*{segundoApellido}">
                         <br>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" placeholder="Salario: " th:field="*{Salario}">
                     </div>
+
+                    <!--                     
+                    
                     <img width="50%" th:src="${empleado.id != 0} 
                                     ? @{/imagenes/}+${empleado.foto} 
                                     : null " 
                                     th:alt="${empleado.id != 0}
                                         ? 'imagen del empleado'
                                         : null ">
-
+ -->
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Foto de Perfil</label>
                         <input class="form-control" type="file" id="formFile">
-                      </div>
+                    </div>
 
-                    <!--  Departamentos  -->
-                    <!-- th:field="*{Departamento}"  -->
-                    <div class="mb-3">
-                        <label for="departamento">Departamento: </label>
-                        <select class="form-control" id="Departamento" name="Departamento">
-                            <option value="0"></option>
-                            <option th:each="departamento: ${departamentos}" th:value="${departamento.id}"
-                                th:text="${departamento.Nombre}" th:selected="${empleado.id != 0
+                    <img th:src="${empleado.id != 0} 
+                                ? @{/imagenes/}+${empleado.foto} 
+                                : null" 
+                        th:alt="${empleado.id != 0}
+                                ? 'imagen del empleado'
+                                : null ">
+
+
+                        <!--  Departamentos  -->
+                        <!-- th:field="*{Departamento}"  -->
+                        <div class="mb-3">
+                            <label for="departamento">Departamento: </label>
+                            <select class="form-control" id="Departamento" name="Departamento">
+                                <option value="0"></option>
+                                <option th:each="departamento: ${departamentos}" th:value="${departamento.id}"
+                                    th:text="${departamento.Nombre}" th:selected="${empleado.id != 0
                                 ? departamento.id == empleado.Departamento.id
                                 : null}">
-                            </option>
-                        </select>
-                        <br>
-                    </div>
-                    <input type="hidden" th:field="*{id}">
-                    <input type="hidden" th:field="*{foto}">
+                                </option>
+                            </select>
+                            <br>
+                        </div>
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{foto}">
 
-                    <a href="/listar" class="btn btn-secondary">Volver al inicio</a>
-                    <input class="btn btn-success" type="submit">
+                        <a href="/listar" class="btn btn-secondary">Volver al inicio</a>
+                        <input class="btn btn-success" type="submit">
 
 
                 </form>
@@ -77,7 +90,8 @@
         </div>
     </div>
 
-    <script th:replace="base :: scripts"></script>
+
+<script th:replace="base :: scripts"></script>
 
 </body>
 
